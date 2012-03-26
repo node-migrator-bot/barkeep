@@ -26,6 +26,7 @@
     "docco" : ">=0.3.0",
     "jshint" : ">=0.5.9",
     "mkdirp" : ">=0.3.0",
+    "mime" : "*"
     "underscore" : "*",
     "async" : "*",
     "knox" : "*",
