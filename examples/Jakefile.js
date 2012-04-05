@@ -14,7 +14,7 @@ task('docs', function () {
     Barkeep.doc.generateDocco(files, function (err) {
         if (err) {
             return console.error('Could not generate documentation.');
-        }  
+        }
         complete();
     });
 }, {async: true});
