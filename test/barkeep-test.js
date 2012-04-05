@@ -15,9 +15,9 @@ vows.describe('barkeep').addBatch({
 }).addBatch({
     "Barkeep S3": {
         "should be able to create a client": function () {
-            Barkeep.s3.createClient({accessKeyId: "bar", 
-                secretAccessKey: "foo"});
-            Barkeep.s3.setBucket("bucket");
+            Barkeep.s3.createClient({accessKeyId: 'fake', 
+                secretAccessKey: 'fake'});
+            Barkeep.s3.setBucket('fake');
             
             assert.isNotNull(Barkeep.s3.client);
             assert.isNotNull(Barkeep.s3.bucket);
@@ -62,3 +62,4 @@ vows.describe('barkeep').addBatch({
         }
     }
 }).export(module);
+
