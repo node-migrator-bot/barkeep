@@ -1,44 +1,42 @@
 {
-  "name": "barkeep",
-  "version": "0.1.3",
-  "author": "Flite, Inc. <support@flite.com>",
-  "description": "a simple collection of common javascript build tasks",
-  "contributors": [ 
-    {
-      "name": "Clay Smith",
-      "email": "clay@flite.com"
-    } 
-  ],
-  "scripts": {
-    "test": "vows --spec --isolate"
+  "name": "grunt-barkeep",
+  "description": "a simple collection of common javascript build tasks for grunt",
+  "version": "0.2.0",
+  "homepage": "https://github.com/flite/barkeep",
+  "author": {
+    "name": "Flite, Inc.",
+    "email": "smithclay@gmail.com"
   },
-  "main": "./lib/barkeep",
   "repository": {
     "type": "git",
-    "url": "https://github.com/flite/barkeep.git"
+    "url": "git://github.com/flite/barkeep.git"
+  },
+  "bugs": {
+    "url": "https://github.com/flite/barkeep/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/flite/barkeep/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "grunt.js",
+  "bin": "bin/grunt-barkeep",
+  "engines": {
+    "node": "*"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "dependencies": {
+    "grunt": "~0.3.9",
+    "glob" : ">=3.1.6",
+    "mkdirp" : ">=0.3.0"
+  },
+  "devDependencies": {
+    "grunt": "~0.3.9"
   },
   "keywords": [
-    "build",
-    "continuous integration"
-  ],
-  "dependencies" : {
-    "glob" : ">=3.1.6",
-    "docco" : ">=0.3.0",
-    "jshint" : ">=0.5.9",
-    "mkdirp" : ">=0.3.0",
-    "mime" : "*",
-    "knox" : "*",
-    "underscore" : "*",
-    "async" : "*",
-    "knox" : "*",
-    "awssum": "*"
-  },
-  "noAnalyze": true,
-  "devDependencies": {
-    "vows"    :  "*"
-  },
-  "license": "MIT",
-  "engine": {
-    "node": ">=0.6"
-  }
+    "gruntplugin"
+  ]
 }
