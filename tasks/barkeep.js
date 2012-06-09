@@ -7,20 +7,17 @@
  */
 
 module.exports = function(grunt) {
-
   // Please see the grunt documentation for more information regarding task and
   // helper creation: https://github.com/cowboy/grunt/blob/master/docs/toc.md
 
-  // ==========================================================================
-  // TASKS
-  // ==========================================================================
+  // Tasks
+  // ====
   grunt.registerTask('barkeep', 'This task is useless.', function() {
     grunt.log.write(grunt.helper('barkeep'));
   });
 
-  // ==========================================================================
-  // HELPERS
-  // ========================================================================== 
+  // Helpers
+  // ====
   grunt.registerHelper('barkeep', function() {
     return 'barkeep!!!';
   });

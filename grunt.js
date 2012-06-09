@@ -7,6 +7,9 @@ module.exports = function(grunt) {
     docco: {
       files: ['tasks/*.js']
     },
+    snockets: {
+      files: ['tasks/*.js']
+    },
     watch: {
       files: '<config:lint.files>',
       tasks: 'default'
