@@ -30,6 +30,7 @@
   },
   "dependencies": {
     "grunt": "~0.3.9",
+    "jasmine-dom": "git+ssh://git@github.com:flite/node-jasmine-dom.git",
     "glob" : ">=3.1.6",
     "mkdirp" : ">=0.3.0"
   },
