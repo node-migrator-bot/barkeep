@@ -1,7 +1,7 @@
 module.exports = function(grunt) {        
     var path = require('path');
     
-    grunt.registerTask('jasmine', 'Run jasmine tests using jasmine-dom.', function() {
+    grunt.registerTask('jasmine', 'Run headless jasmine tests using jasmine-dom.', function() {
         var done = this.async();
         var exec = require('child_process').exec;
 
