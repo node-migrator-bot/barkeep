@@ -4,7 +4,12 @@ module.exports = function(grunt) {
     
     grunt.registerHelper('output-filename', function(filename, config) {
         var extension = path.extname(filename);
-        return filename.replace(extension, '.' + config.destExtension);       
+        var newFilename = filename.replace(extension, '.' + config.destExtension); 
+        // Place in a different directory.
+        if (config.destDir) {
+            return path.join(config.destDir, path.basename(newFilename));
+        }
+        return newFilename;
     });
     
     // ## snockets task
@@ -49,7 +54,8 @@ module.exports = function(grunt) {
             if (err) {
                 return done(err);
             }
-            console.log(config)
+            console.log(config.concat);
+            console.log(config.min);
             // Refresh concat and min config
             grunt.config.set('concat', config.concat);
             grunt.config.set('min', config.min);

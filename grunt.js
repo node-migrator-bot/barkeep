@@ -36,7 +36,8 @@ module.exports = function(grunt) {
     combiner: {
         options: {
             concat: {
-               destExtension: "debug.js"
+               destExtension: "debug.js",
+               destDir: "target"
             },
             min: {
                destExtension: "min.js"
