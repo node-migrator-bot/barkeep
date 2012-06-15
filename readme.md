@@ -1,36 +1,28 @@
-barkeep [![Build Status](https://secure.travis-ci.org/flite/barkeep.png)](http://travis-ci.org/flite/barkeep)
-===
+# grunt-barkeep
 
-<img src="http://bit.ly/wAqCqY" alt="Barkeep" title="Barkeep" height="336" width="535"/>
+a simple collection of common javascript build tasks for grunt.
 
-Barkeep is Flite's javascript build toolkit. It provides a simple toolkit of common build-related functions, such as:
+## Getting Started
+Install this grunt plugin next to your project's [grunt.js gruntfile][getting_started] with: `npm install grunt-barkeep`
 
-* Syncing full directories to S3.
-* Creating directories if they don't exist.
-* Getting a recursive listing of files in a directory.
+Then add this line to your project's `grunt.js` gruntfile:
 
-## Usage
-
-Include the barkeep module and instantiate it.
-
-``` javascript
-var Barkeep = require('barkeep');
-var bk = new Barkeep();
+```javascript
+grunt.loadNpmTasks('grunt-barkeep');
 ```
 
-## Examples
+[grunt]: https://github.com/cowboy/grunt
+[getting_started]: https://github.com/cowboy/grunt/blob/master/docs/getting_started.md
 
-*To create a directory if one doesn't exist.*
+## Documentation
+_(Coming soon)_
 
-``` javascript
-var bk = new Barkeep();
-bk.directory('/scripts');
-```
+## Contributing
+In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [grunt][grunt].
 
-*Get a recursive listing of all files in src/ that end in .js*
+## Release History
+_(Nothing yet)_
 
-``` javascript
-var bk = new Barkeep();
-var files = bk.fileListRecursive('src/', '*.js');
-console.dir(files);
-```
+## License
+Copyright (c) 2012 Flite, Inc.  
+Licensed under the MIT license.
