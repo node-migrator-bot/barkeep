@@ -4,7 +4,7 @@ var util = require('util'),
     glob = require('glob');
     
 module.exports = function(grunt) {    
-    // ## docco
+    // ## docco task
     // Generates docco reports for an array of javascript files.
     grunt.registerMultiTask('docco', 'Generate docco javascript documentation.', function () {
         var done = this.async();
@@ -25,6 +25,7 @@ module.exports = function(grunt) {
                     ' To install Pygments run \'easy_install Pygments\'', code);
                 return done(code);
             }
+            grunt.log.writeln(result);
             done();    
         });
     }); 

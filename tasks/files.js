@@ -4,7 +4,7 @@ var util = require('util'),
     glob = require('glob');
     
 module.exports = function(grunt) {    
-    // ## directory
+    // ## directory helper
     // Creates a directory if one doesn't already exist, with optional callback.
     grunt.registerHelper('directory', function (dir, callback) {
         if (!dir) {
@@ -20,7 +20,7 @@ module.exports = function(grunt) {
         return this;
     });
     
-    // # fileListSync
+    // # fileListSync helper
     // From a glob pattern, gets a listing of files. Optionally excludes some files.
    grunt.registerHelper('fileListSync', function (globPattern, excludes) {
         var allFiles = glob.sync(globPattern);

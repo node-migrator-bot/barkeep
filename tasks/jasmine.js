@@ -1,6 +1,8 @@
 module.exports = function(grunt) {        
     var path = require('path');
     
+    // ## jasmine task
+    // Run headless jasmine tests using jasmine-dom.
     grunt.registerTask('jasmine', 'Run headless jasmine tests using jasmine-dom.', function() {
         var done = this.async();
         var exec = require('child_process').exec;
@@ -22,7 +24,6 @@ module.exports = function(grunt) {
                 grunt.warn('There were test failure(s).'.red);
             }
             done();
-        });
-        
+        });       
     });
 };

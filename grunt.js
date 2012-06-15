@@ -8,7 +8,9 @@ module.exports = function(grunt) {
       files: ['tasks/*.js']
     },
     snockets: {
-      files: ['tasks/*.js']
+      test: {
+          src: ['tasks/*.js']
+      }
     },
     watch: {
       files: '<config:lint.files>',
@@ -30,6 +32,16 @@ module.exports = function(grunt) {
         es5: true
       },
       globals: {}
+    },
+    combiner: {
+        options: {
+            concat: {
+               destExtension: "debug.js"
+            },
+            min: {
+               destExtension: "min.js"
+            }
+        }
     }
   });
 
