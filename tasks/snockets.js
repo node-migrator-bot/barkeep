@@ -12,6 +12,15 @@ module.exports = function(grunt) {
         return newFilename;
     });
     
+    grunt.registerHelper('header-footer', function(sources, config) {
+        if (config.header) {
+           sources.unshift(config.header);
+        }
+        if (config.footer) {
+           sources.push(config.footer);
+        }
+    });
+    
     // ## snockets task
     // Generate a dependency tree using snockets for the concat and min tasks.
     grunt.registerMultiTask('snockets', 'Create snockets dependency tree for concat and min.', function() {
@@ -40,6 +49,7 @@ module.exports = function(grunt) {
                     src: grunt.utils._.pluck(jsList, 'filename'),
                     dest: task.file.dest || grunt.helper('output-filename', fn, options.concat)
                 };
+                grunt.helper('header-footer', config.concat[fn].src, options.concat);
                 
                 // Add to config.min object (if enabled)
                 if (enableMinification) {
@@ -47,6 +57,7 @@ module.exports = function(grunt) {
                         src: config.concat[fn].dest,
                         dest: grunt.helper('output-filename', fn, options.min)
                     };
+                    grunt.helper('header-footer', config.min[fn].src, options.min);
                 }
                 callback(null);
             });
