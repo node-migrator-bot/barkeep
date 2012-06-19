@@ -16,6 +16,14 @@ module.exports = function(grunt) {
       files: '<config:lint.files>',
       tasks: 'default'
     },
+    deploy: {
+        aws_key: 'key',
+        aws_secret: 'secret',
+        aws_bucket: 'bucket',
+        bucketDir: 'scripts',
+        srcDir: 'tasks',
+        src: ['tasks/*.js']
+    },
     jshint: {
       options: {
         curly: true,
