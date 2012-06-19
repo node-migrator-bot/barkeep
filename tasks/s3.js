@@ -55,7 +55,7 @@ module.exports = function(grunt) {
             grunt.warn("Error: No client or bucket name defined.");
         }
         // List all of the objects in the bucket starting with prefix.
-        var options = {BucketName : s3.bucket, prefix: prefix || ''};
+        var options = {BucketName : s3.bucket, prefix: Prefix || ''};
         s3.client.ListObjects(options, function(err, data) {
             if (err) {
                 var message = (err.Body && err.Body.Error && err.Body.Error.Message) || 'Unknown';
