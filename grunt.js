@@ -53,7 +53,9 @@ module.exports = function(grunt) {
         }
     }
   });
-
+  // Load S3 (0.0.4 doesn't have the correct loadTasks way of doing things)
+  require('grunt-s3')(grunt);
+  
   // Load local tasks.
   grunt.loadTasks('tasks');
 
