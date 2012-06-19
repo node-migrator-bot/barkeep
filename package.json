@@ -4,8 +4,7 @@
   "version": "0.2.3",
   "homepage": "https://github.com/flite/barkeep",
   "author": {
-    "name": "Flite, Inc.",
-    "email": "smithclay@gmail.com"
+    "name": "Flite, Inc."
   },
   "repository": {
     "type": "git",
