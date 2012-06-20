@@ -1,6 +1,9 @@
 module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
+    meta: {
+      ducksboard_api_key: 'foo.bar'
+    },
     lint: {
       files: ['grunt.js', 'tasks/**/*.js', 'test/**/*.js']
     },
@@ -40,6 +43,12 @@ module.exports = function(grunt) {
         es5: true
       },
       globals: {}
+    },
+    ducksboard: {
+        tasks: {
+            src: ['tasks/*.js'],
+            endpoint: 'foo.bar'
+        }
     },
     combiner: {
         options: {
