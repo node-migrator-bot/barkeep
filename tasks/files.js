@@ -50,4 +50,10 @@ module.exports = function(grunt) {
         }
         return allFiles;
     });  
+    
+    // ## multitask clean
+    // Deletes specific files or directories.
+    grunt.registerMultiTask('clean', 'delete specific files or directories', function () {
+        var files = grunt.file.expandFiles(this.file.src);
+    });
 };
