@@ -1,6 +1,7 @@
 var util = require('util'),
     path = require('path'),
     fs = require('fs'),
+    rimraf = require('rimraf'),
     glob = require('glob');
     
 module.exports = function(grunt) {    
@@ -18,6 +19,17 @@ module.exports = function(grunt) {
             }
         }    
         return this;
+    });
+    
+    // # deleteDirectory
+    // Deletes a directory using rimraf.
+    grunt.registerHelper('deleteDirectory', function(directory, cb) {
+        rimraf(directory, function(err) {
+            if (err) {
+                return cb(err);
+            }
+            cb();
+        });
     });
     
     // # fileListSync helper

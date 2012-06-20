@@ -1,4 +1,10 @@
 module.exports = function(grunt) {   
+    var zlib = require('zlib');
+    var crypto = require('crypto');
+    var mime = require('mime');
+    var fs = require('fs');
+    var path = require('path');
+    
     // # helper gzip-md5
     // gets md5 of a file, after gzipping.
     grunt.registerHelper('gzip-md5', function(src, cb) {
@@ -29,14 +35,14 @@ module.exports = function(grunt) {
         options = options || {};  
         var accessKeyId = options.accessKeyId || process.env.AWS_ACCESS_KEY_ID, 
             secretAccessKey = options.secretAccessKey || process.env.AWS_SECRET_ACCESS_KEY,
-            awssum = require('awssum');
-            amazon = awssum.load('amazon/amazon');
-            s3Service = awssum.load('amazon/s3');
+            awssum = require('awssum'),
+            amazon = awssum.load('amazon/amazon'),
+            S3Service = awssum.load('amazon/s3');
 
         if (!accessKeyId || !secretAccessKey) {
             throw "Error: Must specify the env variables AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY";
         }
-        return new s3Service(accessKeyId, secretAccessKey, "ops", amazon.US_EAST_1);    
+        return new S3Service(accessKeyId, secretAccessKey, "ops", amazon.US_EAST_1);    
     };
 
     // ## createClient
@@ -70,13 +76,8 @@ module.exports = function(grunt) {
     // # task prepare-deploy
     // Determines to files to upload or delete to S3. Run before the grunt-s3 npm package (bundled separately).
     grunt.registerTask('prepare-deploy', 'Determine files to upload or delete from S3.', function() {
-       var zlib = require('zlib');
-       var crypto = require('crypto');
-       var mime = require('mime');
-       var fs = fs = require('fs');
        var exec = require('child_process').exec;
        var done = this.async();
-       var path = require('path');
    
        this.requiresConfig('deploy.aws_key', 'deploy.aws_secret', 'deploy.aws_bucket', 'deploy.bucketDir', 'deploy.src', 'deploy.srcDir');
 
@@ -100,7 +101,7 @@ module.exports = function(grunt) {
            grunt.verbose.writeln('fetched metadata for ' + remotes.length + ' objects.');
            var locals = grunt.file.expandFiles(grunt.config('deploy.src'));
            var localFiles = locals.map(function(f) {
-               return f.replace(grunt.config('deploy.srcDir'), '')
+               return f.replace(grunt.config('deploy.srcDir'), '');
            });
            var remoteFiles = remotes.map(function(f) {
                return f.Key.replace(grunt.config('deploy.bucketDir'), '');
@@ -131,7 +132,7 @@ module.exports = function(grunt) {
                            return key === file && eTag === localHash && mimeBucket === localMime;
                        });
                        return callback(unchangedFile === false);                      
-                   })          
+                   });          
                });    
            }, function (updateFiles) {
                // If there are no modifications, we're done.

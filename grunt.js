@@ -67,7 +67,18 @@ module.exports = function(grunt) {
   
   // Load local tasks.
   grunt.loadTasks('tasks');
-
+  
+  // Simple task for testing helpers.
+  grunt.registerTask('test-helpers', function () {
+      var done = this.async();
+      grunt.helper('deleteDirectory', 'docs', function(err) {
+          if (err) {
+             grunt.warn(err);
+          }
+          done();
+      }); 
+  });
+  
   // Default task.
   grunt.registerTask('default', 'lint');
 };
