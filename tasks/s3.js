@@ -91,7 +91,7 @@ module.exports = function(grunt) {
                bucket: bucket});
        grunt.verbose.writeln('fetching amazon bucket metadata from: ' + grunt.config('deploy.bucketDir'));
        
-       getBucketObjects('/' + grunt.config('deploy.bucketDir'), s3Client, function (err, remotes) {
+       getBucketObjects(grunt.config('deploy.bucketDir'), s3Client, function (err, remotes) {
            if (err) {
                grunt.fatal(err);
            }
@@ -113,7 +113,7 @@ module.exports = function(grunt) {
            
            // Determine which files have really changed by comparing md4 hashes.
            grunt.utils.async.filter(update, function(file, callback) {
-               var localFile = path.join(__dirname, grunt.config('deploy.srcDir'), file);
+               var localFile = path.join(process.pwd, grunt.config('deploy.srcDir'), file);
 
                fs.readFile(localFile, null, function (err, data) {
                    if (err) {
