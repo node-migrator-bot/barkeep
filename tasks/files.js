@@ -72,14 +72,13 @@ module.exports = function(grunt) {
                    cb();
                });
            } else if (file.type === 'dir') {
-               rimfraf(file.name, function(err) {
+               grunt.helper('deleteDirectory', file.name, function(err) {
                    if (err) {
                        cb(err);
                    }
-                   cb();
-               })
+                   cb();                  
+               });
            }
-           cb();
         }, function (err) {
             if (err) {
                 grunt.warn('Could not delete files: ' + err);

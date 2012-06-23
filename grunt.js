@@ -15,6 +15,11 @@ module.exports = function(grunt) {
           src: ['tasks/*.js']
       }
     },
+    clean: {
+        all: {
+            src: ['node_modules/glob']
+        }
+    },
     watch: {
       files: '<config:lint.files>',
       tasks: 'default'
