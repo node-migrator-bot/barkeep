@@ -1,3 +1,11 @@
+/*
+ * grunt-barkeep
+ * https://github.com/flite/barkeep
+ *
+ * Copyright (c) 2012 Flite, Inc.
+ * Licensed under the MIT license.
+ */
+ 
 var util = require('util'),
     path = require('path'),
     fs = require('fs'),
