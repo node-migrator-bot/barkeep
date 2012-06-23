@@ -54,6 +54,38 @@ module.exports = function(grunt) {
     // ## multitask clean
     // Deletes specific files or directories.
     grunt.registerMultiTask('clean', 'delete specific files or directories', function () {
-        var files = grunt.file.expandFiles(this.file.src);
+        var done = this.async();
+        var files = grunt.file.expandFiles(this.file.src).map(function(f) {
+            return {type: 'file', name: f};
+        });
+        var dirs = grunt.file.expandDirs(this.file.src).map(function(f) {
+            return {type: 'dir', name: f};
+        });
+        
+        grunt.utils.async.forEach(files.concat(dirs), function(file, cb) {
+           grunt.verbose.writeln('Deleting: ' + file.name);
+           if (file.type === 'file') {
+               fs.unlink(file.name, function(err) {
+                   if (err) {
+                       cb(err);
+                   }
+                   cb();
+               });
+           } else if (file.type === 'dir') {
+               rimfraf(file.name, function(err) {
+                   if (err) {
+                       cb(err);
+                   }
+                   cb();
+               })
+           }
+           cb();
+        }, function (err) {
+            if (err) {
+                grunt.warn('Could not delete files: ' + err);
+            }
+            grunt.verbose.writeln('Deleted all...');
+            done();
+        });
     });
 };
