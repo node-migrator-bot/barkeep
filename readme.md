@@ -36,7 +36,7 @@ grunt-barkeep is bundled with the following additonal tasks:
 *Sends file size data to ducksboard for reporting purposes. Useful for tracking the size of your JavaScript web applications over time.*
 
 ### clean
-* A task that will delete the files and/or directories of your choice. *
+*Delete the files and/or directories of your choice.*
 
 ## Examples
 
