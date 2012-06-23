@@ -32,6 +32,12 @@ grunt-barkeep is bundled with the following additonal tasks:
 ### prepare-deploy
 *An experimental task that determines what files to upload or delete from an Amazon S3 buckets when mirroring a local directory. It is meant to be run before the `s3` task in the [grunt-s3](https://github.com/pifantastic/grunt-s3) project.*
 
+### ducksboard
+*Sends file size data to ducksboard for reporting purposes. Useful for tracking the size of your JavaScript web applications over time.*
+
+### clean
+* A task that will delete the files and/or directories of your choice. *
+
 ## Examples
 
 See grunt.js in the barkeep directory.
