@@ -23,8 +23,11 @@ module.exports = function(grunt) {
         }
 
         // Find the path to docco, wherever that may be.
-        var doccoPath = path.resolve(require.resolve('docco'), '../../bin');
-
+        try {
+            var doccoPath = path.resolve(require.resolve('docco'), '../../bin');
+        } catch (e) {
+            grunt.fatal('grunt couldn\'t find the npm docco module.\n Did you install it (npm install -g docco)?');
+        }
         // Spawn the docco process.
         var spawn = grunt.utils.spawn({cmd: path.join(doccoPath, 'docco'), args: js}, function (err, result, code) {
             if (err) {
