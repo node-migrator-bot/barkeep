@@ -12,7 +12,7 @@ module.exports = function(grunt) {
     },
     snockets: {
       test: {
-          src: ['test/snockets/b.js'],
+          src: ['test/fixtures/b.js'],
           options: {
               concat: {
                  destExtension: "debug.js",
