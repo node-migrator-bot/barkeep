@@ -36,7 +36,7 @@ module.exports = function(grunt) {
                         }
                         totalData += data;
                         cb2();
-                    })
+                    });
                 }
                 ], function(err, results) {
                     if (err) {
