@@ -1,7 +1,7 @@
 {
   "name": "grunt-barkeep",
   "description": "a simple collection of common javascript build tasks for grunt",
-  "version": "0.2.11",
+  "version": "0.2.12",
   "homepage": "https://github.com/flite/barkeep",
   "author": {
     "name": "Flite, Inc."
@@ -37,6 +37,7 @@
     "rimraf": "~2.0.2",
     "mime" : "~1.2.5",
     "mkdirp" : ">=0.3.0",
+    "gzip-js": "~0.3.1",
     "peking" : "git+ssh://git@github.com:flite/peking.git"
   },
   "devDependencies": {
