@@ -12,7 +12,16 @@ module.exports = function(grunt) {
     },
     snockets: {
       test: {
-          src: ['tasks/*.js']
+          src: ['test/snockets/b.js'],
+          options: {
+              concat: {
+                 destExtension: "debug.js",
+                 destDir: "target"
+              },
+              min: {
+                 destExtension: "min.js"
+              }
+          }
       }
     },
     clean: {
@@ -53,17 +62,6 @@ module.exports = function(grunt) {
         tasks: {
             src: ['tasks/*.js'],
             endpoint: 'foo.bar'
-        }
-    },
-    combiner: {
-        options: {
-            concat: {
-               destExtension: "debug.js",
-               destDir: "target"
-            },
-            min: {
-               destExtension: "min.js"
-            }
         }
     }
   });

@@ -35,13 +35,13 @@ module.exports = function(grunt) {
         var done = this.async(), task = this;
         var snock = new Snockets();
         
-        // If no destination exists, we will create one from the config.
-        if (!task.file.dest) {
-            this.requiresConfig('combiner.options', 'combiner.options.concat', 'combiner.options.min');
+        // Make sure a configuration object exists if there is not destination.
+        if (!task.file.dest && !task.data.options) {
+            grunt.warn(task.nameArgs + ' requires an options object or a dest object.');
         }
         
         // Get options
-        var options = grunt.config('combiner.options'), 
+        var options = task.data.options, 
             config = {concat: {}, min: {}};
         var enableMinification = options.min.enabled !== false;
         
@@ -73,8 +73,10 @@ module.exports = function(grunt) {
             if (err) {
                 return done(err);
             }
-            console.log(config.concat);
-            console.log(config.min);
+            grunt.verbose.writeln('concat tree'.underline);
+            grunt.verbose.writeln(require('util').inspect(config.concat));
+            grunt.verbose.writeln('min tree'.underline);
+            grunt.verbose.writeln(require('util').inspect(config.min));
             // Refresh concat and min config
             grunt.config.set('concat', config.concat);
             grunt.config.set('min', config.min);
