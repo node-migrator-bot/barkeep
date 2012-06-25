@@ -77,9 +77,14 @@ module.exports = function(grunt) {
             grunt.verbose.writeln(require('util').inspect(config.concat));
             grunt.verbose.writeln('min tree'.underline);
             grunt.verbose.writeln(require('util').inspect(config.min));
+            
+            var existingConcat = grunt.config.get('concat') || {};
+            var existingMin = grunt.config.get('min') || {};
+            grunt.utils._.extend(existingConcat, config.concat);
+            grunt.utils._.extend(existingMin, config.min);
             // Refresh concat and min config
-            grunt.config.set('concat', config.concat);
-            grunt.config.set('min', config.min);
+            grunt.config.set('concat', existingConcat);
+            grunt.config.set('min', existingMin);
             done();
         });
     });
