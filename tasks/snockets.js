@@ -15,7 +15,8 @@ module.exports = function(grunt) {
         var newFilename = filename.replace(extension, '.' + config.destExtension); 
         // Place in a different directory.
         if (config.destDir) {
-            return path.join(config.destDir, path.basename(newFilename));
+            return config.preservePath ? path.join(config.destDir, newFilename) : 
+                path.join(config.destDir, path.basename(newFilename));
         }
         return newFilename;
     });
