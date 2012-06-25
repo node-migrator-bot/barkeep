@@ -62,6 +62,7 @@ module.exports = function(grunt) {
         var done = this.async(), task = this;
         this.requiresConfig('meta.ducksboard_api_key');
         var endpoint = this.data.endpoint;  
+        var gzip = this.data.gzip === true;
         if (!endpoint) {
             grunt.warn('Every target must specify an endpoint.');
         }
@@ -71,8 +72,10 @@ module.exports = function(grunt) {
             if (err) {
                 grunt.warn(err);
             }
-            grunt.log.writeln('[' + task.target + '] total size (bytes): ' + totalSize + ' data ' + compressedSize);
-            peking.pushValue({value: totalSize, endpoint: endpoint, api_key: grunt.config('meta.ducksboard_api_key')}, function (err) {
+            grunt.log.writeln('[' + task.target + '] total size (bytes): ' + totalSize + 
+                ' compressed (bytes): ' + compressedSize);
+            peking.pushValue({value: gzip ? compressedSize : totalSize, 
+                endpoint: endpoint, api_key: grunt.config('meta.ducksboard_api_key')}, function (err) {
                 if (err) {
                     grunt.warn('Could not send data to ducksboard. Code ' + err + '.');
                 }
