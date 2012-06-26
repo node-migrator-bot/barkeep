@@ -23,9 +23,6 @@ grunt-barkeep is bundled with the following additonal tasks:
 ### docco
 *Generate docco documentation from JavaScript files. This is a [multi task](https://github.com/cowboy/grunt/blob/master/docs/types_of_tasks.md#multi-tasks-%E2%9A%91).*
 
-### jasmine
-*Run headless jasmine tests on the command line using [jasmine-dom](https://github.com/andrewpmckenzie/node-jasmine-dom)*.
-
 ### snockets
 *Build a dependency tree of source files for the `concat` and `min` grunt tasks using [snockets](https://github.com/TrevorBurnham/snockets). Snockets is a JavaScript dependency parser similar to Ruby's sprockets. This is a [multi task](https://github.com/cowboy/grunt/blob/master/docs/types_of_tasks.md#multi-tasks-%E2%9A%91).*
 
