@@ -29,7 +29,7 @@ module.exports = function(grunt) {
         return this;
     });
     
-    // # deleteDirectory
+    // # deleteDirectory helper
     // Deletes a directory using rimraf.
     grunt.registerHelper('deleteDirectory', function(directory, cb) {
         rimraf(directory, function(err) {
@@ -37,6 +37,17 @@ module.exports = function(grunt) {
                 return cb(err);
             }
             cb();
+        });
+    });
+    
+    // # commandExists helper
+    // Determine if a command on the system exists (POSIX only)
+    grunt.registerHelper('commandExists', function(command, cb) {
+        var spawn = grunt.utils.spawn({cmd: 'command', args: ['-v', command]}, function (err, result, code) {
+            if (code > 0) {
+                cb(false);
+            }
+            cb(true);
         });
     });
     

@@ -74,12 +74,16 @@ module.exports = function(grunt) {
   // Simple task for testing helpers.
   grunt.registerTask('test-helpers', function () {
       var done = this.async();
-      grunt.helper('deleteDirectory', 'docs', function(err) {
+      grunt.helper('commandExists', 'foo', function(exists) {
+        console.log('foo exists?', exists);
+        done();
+      });
+      /*grunt.helper('deleteDirectory', 'docs', function(err) {
           if (err) {
              grunt.warn(err);
           }
           done();
-      }); 
+      });*/ 
   });
   
   // Default task.
