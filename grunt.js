@@ -65,14 +65,15 @@ module.exports = function(grunt) {
         }
     }
   });
-  // Load S3 (0.0.4 doesn't have the correct loadTasks way of doing things)
-  require('grunt-s3')(grunt);
+  
+  // Load S3
+  grunt.loadNpmTasks('grunt-s3');
   
   // Load local tasks.
   grunt.loadTasks('tasks');
   
   // Simple task for testing helpers.
-  grunt.registerTask('test-helpers', function () {
+  grunt.registerTask('test-helpers', 'Test helpers.', function () {
       var done = this.async();
       grunt.helper('commandExists', 'foo', function(exists) {
         console.log('foo exists?', exists);

@@ -9,8 +9,7 @@
 var util = require('util'),
     path = require('path'),
     fs = require('fs'),
-    rimraf = require('rimraf'),
-    glob = require('glob');
+    rimraf = require('rimraf');
     
 module.exports = function(grunt) {    
     // ## directory helper
@@ -50,26 +49,7 @@ module.exports = function(grunt) {
             cb(true);
         });
     });
-    
-    // # fileListSync helper
-    // From a glob pattern, gets a listing of files. Optionally excludes some files.
-   grunt.registerHelper('fileListSync', function (globPattern, excludes) {
-        var allFiles = glob.sync(globPattern);
-
-        if (allFiles.length === 0) {
-            return [];
-        }
-
-        if (excludes && excludes.length > 0) {
-            allFiles = allFiles.filter(function (file) {
-                return excludes.every(function (exclude) { 
-                        return file.indexOf(exclude) === -1;
-                    });
-            });
-        }
-        return allFiles;
-    });  
-    
+        
     // ## multitask clean
     // Deletes specific files or directories.
     grunt.registerMultiTask('clean', 'delete specific files or directories', function () {

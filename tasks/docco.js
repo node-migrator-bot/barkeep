@@ -8,8 +8,7 @@
  
 var util = require('util'),
     path = require('path'),
-    fs = require('fs'),
-    glob = require('glob');
+    fs = require('fs');
     
 module.exports = function(grunt) {    
     // ## docco task
