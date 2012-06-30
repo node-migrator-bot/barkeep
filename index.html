@@ -1,0 +1,176 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Barkeep by flite</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Barkeep</h1>
+        <p>Flite's node.js JavaScript build toolkit.</p>
+
+        <p class="view"><a href="https://github.com/flite/barkeep">View the Project on GitHub <small>flite/barkeep</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/flite/barkeep/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/flite/barkeep/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/flite/barkeep">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>grunt-barkeep</h1>
+
+<p><img src="http://bit.ly/wAqCqY" alt="Barkeep" title="Barkeep" height="336" width="535"></p>
+
+<p>a simple collection of common javascript build tasks for grunt.</p>
+
+<h2>Getting Started</h2>
+
+<p>Install this grunt plugin next to your project's <a href="https://github.com/cowboy/grunt/blob/master/docs/getting_started.md">grunt.js gruntfile</a> with: <code>npm install grunt-barkeep</code></p>
+
+<p>Then add this line to your project's <code>grunt.js</code> gruntfile:</p>
+
+<div class="highlight">
+<pre><span class="nx">grunt</span><span class="p">.</span><span class="nx">loadNpmTasks</span><span class="p">(</span><span class="s1">'grunt-barkeep'</span><span class="p">);</span>
+</pre>
+</div>
+
+
+<h2>Documentation</h2>
+
+<p>grunt-barkeep is bundled with the following additonal tasks:</p>
+
+<h3>docco</h3>
+
+<p><em>Generate docco documentation from JavaScript files. This is a <a href="https://github.com/cowboy/grunt/blob/master/docs/types_of_tasks.md#multi-tasks-%E2%9A%91" title="Grunt Multitasks">multi task</a>. It requires the <code>docco</code> binary to be installed on the system.</em></p>
+
+<p><strong>Example</strong>:</p>
+
+<div class="highlight">
+<pre><span class="nx">grunt</span><span class="p">.</span><span class="nx">initConfig</span><span class="p">({</span>
+    <span class="nx">docco</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">files</span><span class="o">:</span> <span class="p">[</span><span class="s1">'lib/**/*.js'</span><span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</pre>
+</div>
+
+
+<h3>snockets</h3>
+
+<p><em>Build a dependency tree of source files for the <code>concat</code> and <code>min</code> grunt tasks using <a href="https://github.com/TrevorBurnham/snockets">snockets</a>. Snockets is a JavaScript dependency parser similar to Ruby's sprockets. This is a <a href="https://github.com/cowboy/grunt/blob/master/docs/types_of_tasks.md#multi-tasks-%E2%9A%91" title="Grunt Multitasks">multi task</a>.</em></p>
+
+<p><strong>Example</strong>:</p>
+
+<div class="highlight">
+<pre><span class="nx">grunt</span><span class="p">.</span><span class="nx">initConfig</span><span class="p">({</span>
+    <span class="nx">meta</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">buildDirectory</span><span class="o">:</span> <span class="s1">'dist'</span><span class="p">,</span>
+        <span class="nx">header</span><span class="o">:</span> <span class="s1">'/* Copyright 2012, Flite Inc. */'</span><span class="p">,</span>
+        <span class="nx">footer</span><span class="o">:</span> <span class="s1">'/* End of source */'</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="nx">snockets</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">core</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">src</span><span class="o">:</span> <span class="p">[</span><span class="s1">'public/javascript/main-rollup.js'</span><span class="p">],</span>
+            <span class="nx">options</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">concat</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="nx">header</span><span class="o">:</span> <span class="s1">'&lt;banner:meta.header&gt;'</span><span class="p">,</span>
+                        <span class="nx">destExtension</span><span class="o">:</span> <span class="s2">"debug.js"</span><span class="p">,</span>
+                        <span class="nx">destDir</span><span class="o">:</span> <span class="s2">"&lt;config:meta.buildDirectory&gt;"</span><span class="p">,</span>
+                        <span class="nx">footer</span><span class="o">:</span> <span class="s1">'&lt;banner:meta.footer&gt;'</span>
+                <span class="p">},</span>
+                <span class="nx">min</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="nx">destExtension</span><span class="o">:</span> <span class="s2">"js"</span><span class="p">,</span>
+                        <span class="nx">destDir</span><span class="o">:</span> <span class="s2">"&lt;config:meta.buildDirectory&gt;"</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</pre>
+</div>
+
+
+<h3>prepare-deploy</h3>
+
+<p><em>An experimental task that determines what files to upload or delete from an Amazon S3 buckets when mirroring a local directory. It is meant to be run before the <code>s3</code> task in the <a href="https://github.com/pifantastic/grunt-s3">grunt-s3</a> project.</em></p>
+
+<h3>ducksboard</h3>
+
+<p><em>Sends file size data to ducksboard for reporting purposes. Useful for tracking the size of your JavaScript web applications over time. This is a <a href="https://github.com/cowboy/grunt/blob/master/docs/types_of_tasks.md#multi-tasks-%E2%9A%91" title="Grunt Multitasks">multi task</a>.</em></p>
+
+<p><strong>Example</strong>:</p>
+
+<div class="highlight">
+<pre><span class="nx">grunt</span><span class="p">.</span><span class="nx">initConfig</span><span class="p">({</span>
+    <span class="nx">meta</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">ducksboard_api_key</span><span class="o">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">DUCKSBOARD_API_KEY</span>
+    <span class="p">},</span>
+    <span class="nx">ducksboard</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">everything_gzip</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">src</span><span class="o">:</span> <span class="p">[</span><span class="s1">'public/rollup.js'</span><span class="p">],</span>
+            <span class="nx">endpoint</span><span class="o">:</span> <span class="s1">'everything'</span><span class="p">,</span>
+            <span class="nx">gzip</span><span class="o">:</span> <span class="kc">true</span>
+        <span class="p">},</span>
+        <span class="nx">everything_no_gzip</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">src</span><span class="o">:</span> <span class="p">[</span><span class="s1">'public/rollup.js'</span><span class="p">],</span>
+            <span class="nx">endpoint</span><span class="o">:</span> <span class="s1">'everything-no-gzip'</span>
+        <span class="p">}</span>
+    <span class="p">}</span>   
+<span class="p">});</span>
+</pre>
+</div>
+
+
+<h3>clean</h3>
+
+<p><em>Delete the files and/or directories of your choice. This is a <a href="https://github.com/cowboy/grunt/blob/master/docs/types_of_tasks.md#multi-tasks-%E2%9A%91" title="Grunt Multitasks">multi task</a>.</em></p>
+
+<p><strong>Example</strong>:</p>
+
+<div class="highlight">
+<pre><span class="nx">grunt</span><span class="p">.</span><span class="nx">initConfig</span><span class="p">({</span>
+    <span class="nx">clean</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">files</span><span class="o">:</span> <span class="p">[</span><span class="s1">'build/**/*.js'</span><span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</pre>
+</div>
+
+
+<h3>More Examples</h3>
+
+<p>See grunt.js in the barkeep directory.</p>
+
+<h2>Contributing</h2>
+
+<p>In lieu of a formal style guide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using <a href="https://github.com/cowboy/grunt">grunt</a>.</p>
+
+<h2>Release History</h2>
+
+<p><em>(Nothing yet)</em></p>
+
+<h2>License</h2>
+
+<p>Copyright (c) 2012 Flite, Inc.<br>
+Licensed under the MIT license.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/flite">flite</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
