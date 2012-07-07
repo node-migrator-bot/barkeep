@@ -18,7 +18,7 @@ module.exports = function(grunt) {
     grunt.registerHelper('gzip-md5', function(src, cb) {
         var tmp = src + '.gz';
         var incr = 0;
-        while (path.existsSync(tmp)) {
+        while (fs.existsSync(tmp)) {
           tmp = src + '.' + (incr++) + '.gz';
         }
 

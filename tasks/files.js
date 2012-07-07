@@ -19,7 +19,7 @@ module.exports = function(grunt) {
             throw 'You must specify a directory name.';
         }
         
-        if (!path.existsSync(dir)){
+        if (!fs.existsSync(dir)){
             fs.mkdirSync(dir);
             if (callback){
                 callback(dir);
